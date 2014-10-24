@@ -72,24 +72,3 @@ cacheSolve <- function(x, ...) {
 }
 
 
-# Test Function - how this might actually be used. 
-testStuff <- function() 
-{
-  # This code borrowed from ?solve documentation in R studio - an example of a reversible matrix: 
-  hilbert <- function(n) { i <- 1:n; 1 / outer(i - 1, i, "+") }
-  h8 <- hilbert(8); h8
-  sh8 <- solve(h8)
-  round(sh8 %*% h8, 3)  
-  A <- hilbert(4)
-  A[] <- as.complex(A)
-  
-  # My testing
-  
-  cacheobject <- makeCacheMatrix(A)  
-  
-  message("Call 1")
-  cacheSolve(cacheobject)
-  message("Call 2")
-  cacheSolve(cacheobject)
-  
-}
